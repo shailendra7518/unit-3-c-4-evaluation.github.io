@@ -32,7 +32,7 @@ let sidebar1=document.getElementById("sidebar")
    import sidebar from '/components/sidebar.js'
     sidebar1.innerHTML=sidebar();
 
-import { apiCall, appendArticles } from './scripts/main.js'
+import { apiCall, appendArticles } from '/scripts/main.js'
 
 
   let response= apiCall(`https://newsapi.org/v2/top-headlines?country=in&apiKey=6b3f103f735943af916e9bb8c7c51763`)
@@ -74,32 +74,6 @@ storeSearchterm(data)
 
 
 })
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
 
 
 </script>
