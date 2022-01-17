@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="sidebar">
+
+        <!--DO NOT CHANGE THIS ID's-->
+        <div id="box">
+          <h1>Techcrunch</h1>
+          <div ><button id="but">search</button></div>
+          <div><input type="text" placeholder="Search news" id="news"></div>
+          <div>Startup</div>
+          <div>Newslaters</div>
+          <div>Audio</div>
+          <div>Video</div>
+        </div>
+     
+      </div>
+
+      <div id="main">
+        <!--DO NOT CHANGE THIS ID's-->
+
+      </div>
+    </div>
+  </body>
+
+</html>
+<script type="module">
+  // let sidebar=document.getElementById("sidebar")
+  //   import sidebar from '/components/sidebar.js'
+  //  sidebar.innerHTML=sidebar();
+  
+  // gotnews()
+  async function gotnews(){
+   
+    try{
+
+    
+    let response=await fetch(`https://gnews.io/api/v4/top-headlines?&token=https://gnews.io/api/v4/top-headlines?lang=en&country=in&token=26768659bb1864823276465ecce25ac9`)
+    let data= await response.json()
+    
+    let articles=data.articles
+   localStorage.setItem("news",JSON.stringify(articles))
+   
+
+
+    console.log(articles[0].content)
+    show(got)
+
+  }catch(error){
+    console.log(error)
+  }
+  }
+  let data1 =JSON.parse(localStorage.getItem("news"))
+  show()
+  
+  function show(){
+    let main=document.getElementById("main")
+    data1.map(function({content,description,image,title}){
+let div=document.createElement("div")
+let tex_div=document.createElement("div")
+let content1=document.createElement("p")
+let description1=document.createElement("p")
+let title1=document.createElement("p")
+let name1=document.createElement("p")
+let img=document.createElement("img")
+
+ content1.textContent=content
+ description1.textContent=description
+ title1.textContent=title
+ img.src=image
+ tex_div.append(title1,description1)
+
+ div.append(img,tex_div)
+main.append(div)
+div.addEventListener("click",function(event){
+  
+ 
+  
+
+  let detail={
+     title,
+     image,
+     content,
+
+  }
+  localStorage.setItem("full",JSON.stringify(detail))
+  window.location.href="news.html"
+
+})
+
+
+
+    })
+    
+
+
+  }
+
+
+
+
+document.querySelector("#but").addEventListener("click",search)
+async function search(){
+  let my=document.getElementById("news").value
+   gotnews()
+  try{
+    let response= await fetch(`https://gnews.io/api/v4/top-headlines?q=${my}&token=26768659bb1864823276465ecce25ac9`)
+     let data= await response.json()
+     let total=data.articles
+     localStorage.setItem("article",JSON.stringify(total))
+     localStorage.setItem("search_term",JSON.stringify(my))
+     console.log(data)
+
+window.location.href="search.html"
+  }catch(error){
+    console.log(error)
+  }
+}
+
+
+</script>
