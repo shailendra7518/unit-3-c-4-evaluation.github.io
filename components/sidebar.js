@@ -8,6 +8,7 @@ function sidebar() {
   <div>Newslaters</div>
   <div>Audio</div>
   <div>Video</div>
+  <button id="call1">puther</button>
 </div>`
 
     // return your html component here

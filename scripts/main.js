@@ -26,7 +26,7 @@ function appendArticles(articles,main) {
 
 
 
- articles.map(function({content,description,urlToImage,title}){
+ articles.map(function({content,description,image,title}){
     let div=document.createElement("div")
     let tex_div=document.createElement("div")
     let content1=document.createElement("p")
@@ -38,7 +38,7 @@ function appendArticles(articles,main) {
      content1.textContent=content
      description1.textContent=description
      title1.textContent=title
-     img.src=urlToImage
+     img.src=image
      tex_div.append(title1,description1)
     
      div.append(img,tex_div)
@@ -51,7 +51,7 @@ function appendArticles(articles,main) {
 
           let detail={
              title,
-             urlToImage,
+             image,
              content,
         
           }
