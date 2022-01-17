@@ -29,9 +29,9 @@ function appendArticles(articles,main) {
  articles.map(function({content,description,image,title}){
     let div=document.createElement("div")
     let tex_div=document.createElement("div")
-    let content1=document.createElement("p")
-    let description1=document.createElement("p")
-    let title1=document.createElement("p")
+    let content1=document.createElement("h4")
+    let description1=document.createElement("h3")
+    let title1=document.createElement("h2")
    
     let img=document.createElement("img")
     

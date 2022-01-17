@@ -1,14 +1,55 @@
+#sidebar{
+  /* display: flex;
+  flex-flow: column;
+  justify-content: center; */
+  gap: 2%;
+}
+#box>div{
+  font-size: 22px;
+  
+}
+h2{
+  color: blue;
+}
+button{
+  height: 50px;
+  width: 80px;
+}
+input{
+  height: 50px;
+  font-size: 25px;
+  width: 94%;
+}
 #box{
-    border: 2px solid red;
+    /* border: 2px solid red; */
+    position: fixed;
+    background-color: white;
+    width: 250px;
+    height: 350px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
     
   }
   #container{
     display: flex;
-    border: 2px solid red;
+    /* border: 2px solid red; */
+    gap: 6%;
+
+  }
+  #main{
+    display: grid;
+    grid-template-columns: 80%;
+    grid-row-gap: 3%;
+margin-left: 20%;
+  
+    
   }
   #main>div{
-    border: 2px solid red;
+    /* border: 2px solid red; */
     display: flex;
+    gap: 10%;
   }
   img{
      width: 300px;

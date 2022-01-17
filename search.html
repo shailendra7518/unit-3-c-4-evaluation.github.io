@@ -17,11 +17,11 @@
       <!-- show headline, description and image -->
 
 
-
+<!-- 
       Wrong -> <a href="/Users/jonny/Desktop/misc/jugnu-tester/template-U3C4/Template-U3C4/news.html"></a>
 
 
-      Correct -> <a href="/news.html"></a>
+      Correct -> <a href="/news.html"></a> -->
 
 
     </div>
@@ -38,9 +38,9 @@ let data1=JSON.parse(localStorage.getItem("article"))
     data1.map(function({content,description,image,title}){
 let div=document.createElement("div")
 let tex_div=document.createElement("div")
-let content1=document.createElement("p")
-let description1=document.createElement("p")
-let title1=document.createElement("p")
+let content1=document.createElement("h4")
+let description1=document.createElement("h3")
+let title1=document.createElement("h2")
 let name1=document.createElement("p")
 let img=document.createElement("img")
 
