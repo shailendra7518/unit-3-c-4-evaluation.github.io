@@ -35,7 +35,7 @@ show()
   
   function show(){
     let main=document.getElementById("main")
-    data1.map(function({content,description,image,title}){
+    data1.map(function({content,description,urlToImage,title}){
 let div=document.createElement("div")
 let tex_div=document.createElement("div")
 let content1=document.createElement("p")
@@ -47,7 +47,7 @@ let img=document.createElement("img")
  content1.textContent= ` content -- ${content}`
  description1.textContent=description
  title1.textContent= ` Headline -- ${title}`
- img.src=image
+ img.src=urlToImage
  tex_div.append(title1,content1,description1)
 
  div.append(img,tex_div)

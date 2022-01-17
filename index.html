@@ -15,17 +15,9 @@
       <div id="sidebar">
 
         <!--DO NOT CHANGE THIS ID's-->
-        <div id="box">
-          <h1>Techcrunch</h1>
-          <div ><button id="but">search</button></div>
-          <div><input type="text" placeholder="Search news" id="news"></div>
-          <div>Startup</div>
-          <div>Newslaters</div>
-          <div>Audio</div>
-          <div>Video</div>
-        </div>
+        
      
-      </div>
+      </div> 
 
       <div id="main">
         <!--DO NOT CHANGE THIS ID's-->
@@ -36,97 +28,78 @@
 
 </html>
 <script type="module">
-  // let sidebar=document.getElementById("sidebar")
-  //   import sidebar from '/components/sidebar.js'
-  //  sidebar.innerHTML=sidebar();
-  
-  // gotnews()
-  async function gotnews(){
-   
-    try{
+let sidebar1=document.getElementById("sidebar")
+   import sidebar from '/components/sidebar.js'
+    sidebar1.innerHTML=sidebar();
+
+import { apiCall, appendArticles } from '/scripts/main.js'
+
+
+  let response= apiCall(`https://newsapi.org/v2/top-headlines?country=in&apiKey=6b3f103f735943af916e9bb8c7c51763`)
 
     
-    let response=await fetch(`https://gnews.io/api/v4/top-headlines?&token=https://gnews.io/api/v4/top-headlines?lang=en&country=in&token=26768659bb1864823276465ecce25ac9`)
-    let data= await response.json()
+let main=document.querySelector("#main")
+
+response.then((res)=>{
+
+let data= res.articles
+
+console.log(data)
+appendArticles(data,main)
+
+})
+
+    //  
+
+import storeSearchterm from '/scripts/search.js'
+
+    document.querySelector("#but").addEventListener("click",function(){
+      let my=document.getElementById("news").value
+      let response= apiCall(`https://newsapi.org/v2/everything?q=${my}&apiKey=6b3f103f735943af916e9bb8c7c51763`)
+
     
-    let articles=data.articles
-   localStorage.setItem("news",JSON.stringify(articles))
-   
+let main=document.querySelector("#main")
+
+response.then((res)=>{
+
+let data= res.articles
+storeSearchterm(data)
 
 
-    console.log(articles[0].content)
-    show(got)
-
-  }catch(error){
-    console.log(error)
-  }
-  }
-  let data1 =JSON.parse(localStorage.getItem("news"))
-  show()
-  
-  function show(){
-    let main=document.getElementById("main")
-    data1.map(function({content,description,image,title}){
-let div=document.createElement("div")
-let tex_div=document.createElement("div")
-let content1=document.createElement("p")
-let description1=document.createElement("p")
-let title1=document.createElement("p")
-let name1=document.createElement("p")
-let img=document.createElement("img")
-
- content1.textContent=content
- description1.textContent=description
- title1.textContent=title
- img.src=image
- tex_div.append(title1,description1)
-
- div.append(img,tex_div)
-main.append(div)
-div.addEventListener("click",function(event){
-  
- 
-  
-
-  let detail={
-     title,
-     image,
-     content,
-
-  }
-  localStorage.setItem("full",JSON.stringify(detail))
-  window.location.href="news.html"
+     localStorage.setItem("search_term",JSON.stringify(my))
+     window.location.href="search.html"
 
 })
 
 
 
-    })
-    
+})
 
-
-  }
-
+ 
 
 
 
-document.querySelector("#but").addEventListener("click",search)
-async function search(){
-  let my=document.getElementById("news").value
-   gotnews()
-  try{
-    let response= await fetch(`https://gnews.io/api/v4/top-headlines?q=${my}&token=26768659bb1864823276465ecce25ac9`)
-     let data= await response.json()
-     let total=data.articles
-     localStorage.setItem("article",JSON.stringify(total))
-     localStorage.setItem("search_term",JSON.stringify(my))
-     console.log(data)
 
-window.location.href="search.html"
-  }catch(error){
-    console.log(error)
-  }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
 
 
 </script>
