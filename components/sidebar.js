@@ -3,7 +3,7 @@ function sidebar() {
   return `  <div id="box">
   <h1>Techcrunch</h1>
   <div><button id="but">search</button></div>
-  <div><input type="text" placeholder="Search news" id="news"></div>
+  <div><input type="text" placeholder="Search news" id="searchbar"></div>
   <div>Startup</div>
   <div>Newslaters</div>
   <div>Audio</div>
